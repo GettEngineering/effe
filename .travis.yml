@@ -1,7 +1,7 @@
 language: go
 dist: xenial
 go:
-  - 1.13
+  - 1.14
 env:
   global:
     - GO111MODULE=on
@@ -13,3 +13,5 @@ script:
   - go mod tidy
   - if [[ `git status --porcelain go.mod` ]]; then git diff -- go.mod ; echo "File 'go.mod' is outdated. Need to run 'go mod tidy' before commit." ; exit 1; fi
   - if [[ `git status --porcelain go.sum` ]]; then git diff -- go.sum ; echo "File 'go.sum' is outdated. Need to run 'go mod tidy' before commit." ; exit 1; fi
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
