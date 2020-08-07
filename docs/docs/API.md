@@ -24,7 +24,7 @@ The directives in this package are used as input to the Effe code generation too
   - [func Wrap(beforeFunc StepFunc, afterFunc StepFunc, steps ...StepFunc) StepFunc](<#func-wrap>)
 
 
-## func [BuildFlow](<https://github.com/gtforge/effe/blob/master/effe.go#L23>)
+## func BuildFlow
 
 ```go
 func BuildFlow(funcs ...StepFunc) interface{}
@@ -32,7 +32,7 @@ func BuildFlow(funcs ...StepFunc) interface{}
 
 Build is placed in the body of an inhector function template to declare the steps\.
 
-## type [CaseKey](<https://github.com/gtforge/effe/blob/master/effe.go#L16>)
+## type CaseKey
 
 Type for declaring business logic for specific case
 
@@ -40,7 +40,7 @@ Type for declaring business logic for specific case
 type CaseKey interface{}
 ```
 
-## type [StepFunc](<https://github.com/gtforge/effe/blob/master/effe.go#L13>)
+## type StepFunc
 
 Based type for declaring steps
 
@@ -48,7 +48,7 @@ Based type for declaring steps
 type StepFunc interface{}
 ```
 
-### func [Before](<https://github.com/gtforge/effe/blob/master/effe.go#L105>)
+### func Before
 
 ```go
 func Before(fn interface{}) StepFunc
@@ -56,7 +56,7 @@ func Before(fn interface{}) StepFunc
 
 This directive helps to declare a function which executes before other steps in a directive Wrap\. This directive can be used only in Wrap\.
 
-### func [Case](<https://github.com/gtforge/effe/blob/master/effe.go#L147>)
+### func Case
 
 ```go
 func Case(key CaseKey, funcs ...StepFunc) StepFunc
@@ -64,7 +64,7 @@ func Case(key CaseKey, funcs ...StepFunc) StepFunc
 
 This directive can be used only in Decision\. Case declares the steps which will execute\.
 
-### func [Decision](<https://github.com/gtforge/effe/blob/master/effe.go#L140>)
+### func Decision
 
 ```go
 func Decision(tag interface{}, cases ...StepFunc) StepFunc
@@ -96,7 +96,7 @@ func BuildMyBusinessFlow2(){
 }
 ```
 
-### func [Failure](<https://github.com/gtforge/effe/blob/master/effe.go#L66>)
+### func Failure
 
 ```go
 func Failure(fn interface{}) StepFunc
@@ -104,7 +104,7 @@ func Failure(fn interface{}) StepFunc
 
 A Failure works the same way as Step\, but with one exception: a function executes only if one of steps returns an error\.
 
-### func [Step](<https://github.com/gtforge/effe/blob/master/effe.go#L59>)
+### func Step
 
 ```go
 func Step(fn interface{}) StepFunc
@@ -140,7 +140,7 @@ func BuildMySecondBusinessFlow(){
 }
 ```
 
-### func [Success](<https://github.com/gtforge/effe/blob/master/effe.go#L97>)
+### func Success
 
 ```go
 func Success(fn interface{}) StepFunc
@@ -148,7 +148,7 @@ func Success(fn interface{}) StepFunc
 
 This directive helps to declare a function which executes after other steps in a directive Wrap and if not one step returned an error\. This directive can be used only in Wrap\.
 
-### func [Wrap](<https://github.com/gtforge/effe/blob/master/effe.go#L89>)
+### func Wrap
 
 ```go
 func Wrap(beforeFunc StepFunc, afterFunc StepFunc, steps ...StepFunc) StepFunc
