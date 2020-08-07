@@ -1,0 +1,29 @@
+.idea
+.vscode
+.tags*
+lastupdate.tmp
+.DS_Store
+dump.rdb
+*.out
+*.log
+bin/*
+tests/log
+log/*
+public/assets
+.sass-cache
+tmp
+*.coverprofile
+coverage.*
+routers/commentsRouter_____*
+
+# node packages
+/node_modules
+/flow-typed
+
+# static files by webpack
+/views/ui/index.html
+/assets/build
+
+# yarn packages manager
+yarn-error.log
+.env

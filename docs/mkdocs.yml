@@ -1,0 +1,17 @@
+site_name: Effe
+repo_url: https://github.com/GettEngineering/effe
+strict: true
+nav:
+  - Introduction: index.md
+  - Getting Started: GettingStarted.md
+  - Api: API.md
+  - Architecture: architecture.md
+  - Default strategy: chain.md
+  - Customization: customization.md
+  - Diagrams: diagrams.md
+theme: readthedocs
+markdown_extensions:
+  - toc:
+      permalink: true
+  - admonition
+  - codehilite

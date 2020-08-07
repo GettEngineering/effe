@@ -1,0 +1,15 @@
+language: go
+dist: xenial
+go:
+  - 1.13
+env:
+  global:
+    - GO111MODULE=on
+install:
+  - if ! [ -x "$(command -v golangci-lint)" ]; then curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.21.0; fi
+script:
+  - golangci-lint run
+  - go test -v -race -p 8 -parallel 8 -coverpkg ./... -coverprofile coverage.out ./...
+  - go mod tidy
+  - if [[ `git status --porcelain go.mod` ]]; then git diff -- go.mod ; echo "File 'go.mod' is outdated. Need to run 'go mod tidy' before commit." ; exit 1; fi
+  - if [[ `git status --porcelain go.sum` ]]; then git diff -- go.sum ; echo "File 'go.sum' is outdated. Need to run 'go mod tidy' before commit." ; exit 1; fi

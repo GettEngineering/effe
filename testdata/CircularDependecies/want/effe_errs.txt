@@ -1,0 +1,2 @@
+circular dependency found for A
+circular dependency found for B
