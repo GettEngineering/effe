@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Api - Effe</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Api";
+    var mkdocs_page_input_path = "API.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Effe</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="..">Introduction</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../GettingStarted/">Getting Started</a>
+                    </li>
+                </ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Api</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#index">Index</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#func-buildflow">func BuildFlow</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#type-casekey">type CaseKey</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#type-stepfunc">type StepFunc</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#func-before">func Before</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#func-case">func Case</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#func-decision">func Decision</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#func-failure">func Failure</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#func-step">func Step</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#func-success">func Success</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#func-wrap">func Wrap</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../architecture/">Architecture</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../chain/">Default strategy</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../customization/">Customization</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../diagrams/">Diagrams</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Effe</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Api</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/GettEngineering/effe/edit/master/docs/API.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <!-- Code generated by gomarkdoc. DO NOT EDIT -->
+
+<h1 id="effe">effe<a class="headerlink" href="#effe" title="Permanent link">&para;</a></h1>
+<pre class="codehilite"><code class="language-go">import &quot;github.com/GettEngineering/effe&quot;</code></pre>
+
+
+<p>Package effe contains directives for Effe code generation. For an overview of working with Effe\, see the user guide at https://github.com/GettEngineering/effe/blob/master/docs/docs/GettingStarted.md</p>
+<p>The directives in this package are used as input to the Effe code generation tool. The entry point of Effe's analysis are injector functions: function templates denoted by only containing a call to BuildFlow. The arguments to BuildFlow describes a set of steps and the Effe code generation tool builds calls of steps according to strategy.</p>
+<h2 id="index">Index<a class="headerlink" href="#index" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="#func-buildflow">func BuildFlow(funcs ...StepFunc) interface{}</a></li>
+<li><a href="#type-casekey">type CaseKey</a></li>
+<li><a href="#type-stepfunc">type StepFunc</a></li>
+<li><a href="#func-before">func Before(fn interface{}) StepFunc</a></li>
+<li><a href="#func-case">func Case(key CaseKey, funcs ...StepFunc) StepFunc</a></li>
+<li><a href="#func-decision">func Decision(tag interface{}, cases ...StepFunc) StepFunc</a></li>
+<li><a href="#func-failure">func Failure(fn interface{}) StepFunc</a></li>
+<li><a href="#func-step">func Step(fn interface{}) StepFunc</a></li>
+<li><a href="#func-success">func Success(fn interface{}) StepFunc</a></li>
+<li><a href="#func-wrap">func Wrap(beforeFunc StepFunc, afterFunc StepFunc, steps ...StepFunc) StepFunc</a></li>
+</ul>
+<h2 id="func-buildflow">func <a href="https://github.com/gtforge/effe/blob/master/effe.go#L23">BuildFlow</a><a class="headerlink" href="#func-buildflow" title="Permanent link">&para;</a></h2>
+<pre class="codehilite"><code class="language-go">func BuildFlow(funcs ...StepFunc) interface{}</code></pre>
+
+
+<p>Build is placed in the body of an inhector function template to declare the steps.</p>
+<h2 id="type-casekey">type <a href="https://github.com/gtforge/effe/blob/master/effe.go#L16">CaseKey</a><a class="headerlink" href="#type-casekey" title="Permanent link">&para;</a></h2>
+<p>Type for declaring business logic for specific case</p>
+<pre class="codehilite"><code class="language-go">type CaseKey interface{}</code></pre>
+
+
+<h2 id="type-stepfunc">type <a href="https://github.com/gtforge/effe/blob/master/effe.go#L13">StepFunc</a><a class="headerlink" href="#type-stepfunc" title="Permanent link">&para;</a></h2>
+<p>Based type for declaring steps</p>
+<pre class="codehilite"><code class="language-go">type StepFunc interface{}</code></pre>
+
+
+<h3 id="func-before">func <a href="https://github.com/gtforge/effe/blob/master/effe.go#L105">Before</a><a class="headerlink" href="#func-before" title="Permanent link">&para;</a></h3>
+<pre class="codehilite"><code class="language-go">func Before(fn interface{}) StepFunc</code></pre>
+
+
+<p>This directive helps to declare a function which executes before other steps in a directive Wrap. This directive can be used only in Wrap.</p>
+<h3 id="func-case">func <a href="https://github.com/gtforge/effe/blob/master/effe.go#L147">Case</a><a class="headerlink" href="#func-case" title="Permanent link">&para;</a></h3>
+<pre class="codehilite"><code class="language-go">func Case(key CaseKey, funcs ...StepFunc) StepFunc</code></pre>
+
+
+<p>This directive can be used only in Decision. Case declares the steps which will execute.</p>
+<h3 id="func-decision">func <a href="https://github.com/gtforge/effe/blob/master/effe.go#L140">Decision</a><a class="headerlink" href="#func-decision" title="Permanent link">&para;</a></h3>
+<pre class="codehilite"><code class="language-go">func Decision(tag interface{}, cases ...StepFunc) StepFunc</code></pre>
+
+
+<p>Decision directive helps to organize branching of our business logic. First argument can be a type or a field from the type. Golang doesn't provide an opportunity to pass types to function argument. For that you need to create an empty object with your type. If you want branching your logic by field from type you can declare it. For that you need to create an empty object with your type and get field from it. Other arguments declare handlers for every case. Every case can be declared with Case directive. Failure directive works here too. With Failure you can declare an error handler for case.</p>
+<p>Examples:</p>
+<pre class="codehilite"><code>func BuildMyBusinessFlow(){
+    effe.BuildFlow(
+        effe.Step(tryLock),
+        effe.Decision(new(Lock),
+            effe.Case(true, effe.Step(step1)),
+            effe.Case(false, effe.Step(step2)),
+        ),
+    )
+}
+
+func BuildMyBusinessFlow2(){
+    effe.BuildFlow(
+        effe.Step(tryLock),
+            effe.Decision(Locker{}.Lock,
+            effe.Case(true, effe.Step(step1)),
+            effe.Case(false, effe.Step(step2)),
+        ),
+    )
+}</code></pre>
+
+
+<h3 id="func-failure">func <a href="https://github.com/gtforge/effe/blob/master/effe.go#L66">Failure</a><a class="headerlink" href="#func-failure" title="Permanent link">&para;</a></h3>
+<pre class="codehilite"><code class="language-go">func Failure(fn interface{}) StepFunc</code></pre>
+
+
+<p>A Failure works the same way as Step\, but with one exception: a function executes only if one of steps returns an error.</p>
+<h3 id="func-step">func <a href="https://github.com/gtforge/effe/blob/master/effe.go#L59">Step</a><a class="headerlink" href="#func-step" title="Permanent link">&para;</a></h3>
+<pre class="codehilite"><code class="language-go">func Step(fn interface{}) StepFunc</code></pre>
+
+
+<p>A Step declares a function which will be executed in this place. The function should have the following format:</p>
+<p>Format:</p>
+<pre class="codehilite"><code>func step1(dep1 FirstDependency, dep2 SecondDependency) func(req *httpRequest) error {
+    return func(req *httpRequest) error {
+        return dep1.Send(dep2, req)
+    }
+}</code></pre>
+
+
+<p>Function arguments should be dependencies for your step. It is necessary to separate dependencies between steps. You don't need to create big service objects. Effe code generation tool calculates all dependencies for your flow and Effe generates a service object with dependecies automatically. Function return value should be the function which executes here. Also\, you can call another business flow here. It helps to split and reuse existing business logic.</p>
+<p>Examples:</p>
+<pre class="codehilite"><code>func BuildMyFirstBusinessFlow(){
+    effe.BuldFlow(
+        effe.Step(step1),
+    )
+}
+
+func BuildMySecondBusinessFlow(){
+    effe.BuildFlow(
+        effe.Step(BuildMyFirstBusinessFlow),
+    )
+}</code></pre>
+
+
+<h3 id="func-success">func <a href="https://github.com/gtforge/effe/blob/master/effe.go#L97">Success</a><a class="headerlink" href="#func-success" title="Permanent link">&para;</a></h3>
+<pre class="codehilite"><code class="language-go">func Success(fn interface{}) StepFunc</code></pre>
+
+
+<p>This directive helps to declare a function which executes after other steps in a directive Wrap and if not one step returned an error. This directive can be used only in Wrap.</p>
+<h3 id="func-wrap">func <a href="https://github.com/gtforge/effe/blob/master/effe.go#L89">Wrap</a><a class="headerlink" href="#func-wrap" title="Permanent link">&para;</a></h3>
+<pre class="codehilite"><code class="language-go">func Wrap(beforeFunc StepFunc, afterFunc StepFunc, steps ...StepFunc) StepFunc</code></pre>
+
+
+<p>Wrap helps to declare a block of steps which is executed in the following sequence. If we declare a function with Before directive\, then it will be executed first. After that\, all functions declared with Step directive will be executed. Lastly a function declared with Success directive will be executed. Also\, we can declare an error handler here with Failure directive.</p>
+<p>Examples:</p>
+<pre class="codehilite"><code>func BuildMyBusinessFlow() {
+    effe.BuildFlow(
+        effe.Step(step1),
+        effe.Step(step2),
+        effe.Wrap(effe.Before(lock), effe.Success(unlock), effe.Failure(catchErrAndUnlock),
+            effe.Step(step3),
+            effe.Step(step4),
+        ),
+    )
+}</code></pre>
+
+
+<p>Generated by <a href="https://github.com/princjef/gomarkdoc">gomarkdoc</a></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../architecture/" class="btn btn-neutral float-right" title="Architecture">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../GettingStarted/" class="btn btn-neutral" title="Getting Started"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/GettEngineering/effe/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../GettingStarted/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../architecture/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
