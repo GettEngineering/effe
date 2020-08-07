@@ -7,14 +7,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   
-  
   <link rel="shortcut icon" href="../img/favicon.ico">
   <title>Getting Started - Effe</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
-  <link rel="stylesheet" href="../css/theme.css" />
-  <link rel="stylesheet" href="../css/theme_extra.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
   
   <script>
     // Current page data
@@ -25,7 +24,7 @@
   
   <script src="../js/jquery-2.1.1.min.js" defer></script>
   <script src="../js/modernizr-2.8.3.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script> 
   
 </head>
@@ -36,7 +35,6 @@
 
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
-    <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
         <a href=".." class="icon icon-home"> Effe</a>
         <div role="search">
@@ -47,48 +45,67 @@
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="..">Introduction</a>
-                    </li>
-                </ul>
-                <ul class="current">
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Getting Started</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#create-new-project">Create new project</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#create-repositoriesstructs">Create repositories/structs</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#create-steps">Create steps</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#define-workflow">Define Workflow</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#generate-flow">Generate flow</a>
-    </li>
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Introduction</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">Getting Started</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#getting-started">Getting Started</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#create-new-project">Create new project</a></li>
+        
+            <li><a class="toctree-l3" href="#create-repositoriesstructs">Create repositories/structs</a></li>
+        
+            <li><a class="toctree-l3" href="#create-steps">Create steps</a></li>
+        
+            <li><a class="toctree-l3" href="#define-workflow">Define Workflow</a></li>
+        
+            <li><a class="toctree-l3" href="#generate-flow">Generate flow</a></li>
+        
+        </ul>
+    
+
     </ul>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../API/">Api</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../architecture/">Architecture</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../chain/">Default strategy</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../customization/">Customization</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../diagrams/">Diagrams</a>
-                    </li>
-                </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../API/">Api</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../architecture/">Architecture</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../chain/">Default strategy</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../customization/">Customization</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../diagrams/">Diagrams</a>
+	    </li>
+          
+        </ul>
       </div>
-    </div>
+      &nbsp;
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
@@ -116,7 +133,6 @@
       
     </li>
   </ul>
-  
   <hr/>
 </div>
           <div role="main">
@@ -124,131 +140,139 @@
               
                 <h1 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h1>
 <h2 id="create-new-project">Create new project<a class="headerlink" href="#create-new-project" title="Permanent link">&para;</a></h2>
-<pre class="codehilite"><code class="language-bash">mkdir example &amp;&amp; cd example</code></pre>
+<div class="codehilite"><pre><span></span>mkdir example <span class="o">&amp;&amp;</span> <span class="nb">cd</span> example
+</pre></div>
 
 
-<pre class="codehilite"><code class="language-bash">go mod init github.com/example/example</code></pre>
+<div class="codehilite"><pre><span></span>go mod init github.com/example/example
+</pre></div>
 
 
 <h2 id="create-repositoriesstructs">Create repositories/structs<a class="headerlink" href="#create-repositoriesstructs" title="Permanent link">&para;</a></h2>
 <p>repositories.go</p>
-<pre class="codehilite"><code class="language-go">package mypackage
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">mypackage</span>
 
-import (
-    &quot;context&quot;
-)
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;context&quot;</span>
+<span class="p">)</span>
 
-type UserRepository interface {
-    Create(context.Context, User) error
-}</code></pre>
+<span class="kd">type</span> <span class="nx">UserRepository</span> <span class="kd">interface</span> <span class="p">{</span>
+    <span class="nx">Create</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span> <span class="nx">User</span><span class="p">)</span> <span class="kt">error</span>
+<span class="p">}</span>
+</pre></div>
 
 
 <p>structs.go</p>
-<pre class="codehilite"><code class="language-go">package mypackage
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">mypackage</span>
 
-type User struct {
-    Email    string
-    Password string
-}
+<span class="kd">type</span> <span class="nx">User</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">Email</span>    <span class="kt">string</span>
+    <span class="nx">Password</span> <span class="kt">string</span>
+<span class="p">}</span>
 
-type UserAttributes struct {
-    Email    string
-    Password string
-}</code></pre>
+<span class="kd">type</span> <span class="nx">UserAttributes</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">Email</span>    <span class="kt">string</span>
+    <span class="nx">Password</span> <span class="kt">string</span>
+<span class="p">}</span>
+</pre></div>
 
 
 <h2 id="create-steps">Create steps<a class="headerlink" href="#create-steps" title="Permanent link">&para;</a></h2>
 <p>steps.go</p>
-<pre class="codehilite"><code class="language-go">package mypackage
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nx">mypackage</span>
 
-import (
-    &quot;context&quot;
-)
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;context&quot;</span>
+<span class="p">)</span>
 
-func buildUser() func(UserAttributes) User {
-    return func(uAttrs UserAttributes) User {
-        return User{
-            Email:    uAttrs.Email,
-            Password: uAttrs.Password,
-        }
-    }
-}
+<span class="kd">func</span> <span class="nx">buildUser</span><span class="p">()</span> <span class="kd">func</span><span class="p">(</span><span class="nx">UserAttributes</span><span class="p">)</span> <span class="nx">User</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="kd">func</span><span class="p">(</span><span class="nx">uAttrs</span> <span class="nx">UserAttributes</span><span class="p">)</span> <span class="nx">User</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">User</span><span class="p">{</span>
+            <span class="nx">Email</span><span class="p">:</span>    <span class="nx">uAttrs</span><span class="p">.</span><span class="nx">Email</span><span class="p">,</span>
+            <span class="nx">Password</span><span class="p">:</span> <span class="nx">uAttrs</span><span class="p">.</span><span class="nx">Password</span><span class="p">,</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 
-func createUser(userRepo UserRepository) func(context.Context, User) error {
-    return func(ctx context.Context, user User) error {
-        return userRepo.Create(ctx, user)
-    }
-}</code></pre>
+<span class="kd">func</span> <span class="nx">createUser</span><span class="p">(</span><span class="nx">userRepo</span> <span class="nx">UserRepository</span><span class="p">)</span> <span class="kd">func</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span> <span class="nx">User</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="kd">func</span><span class="p">(</span><span class="nx">ctx</span> <span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span> <span class="nx">user</span> <span class="nx">User</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">userRepo</span><span class="p">.</span><span class="nx">Create</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span> <span class="nx">user</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
 
 
 <h2 id="define-workflow">Define Workflow<a class="headerlink" href="#define-workflow" title="Permanent link">&para;</a></h2>
 <p>effe.go</p>
-<pre class="codehilite"><code class="language-go">// +build effeinject
+<div class="codehilite"><pre><span></span><span class="c1">// +build effeinject</span>
 
-package mypackage
+<span class="kn">package</span> <span class="nx">mypackage</span>
 
-import (
-    &quot;github.com/GettEngineering/effe&quot;
-)
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;github.com/GettEngineering/effe&quot;</span>
+<span class="p">)</span>
 
-func BuildCreateUserFlow(uAttrs UserAttributes) error {
-    effe.BuildFlow(
-        effe.Step(buildUser),
-        effe.Step(createUser),
-    )
-    return nil
-}</code></pre>
+<span class="kd">func</span> <span class="nx">BuildCreateUserFlow</span><span class="p">(</span><span class="nx">uAttrs</span> <span class="nx">UserAttributes</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
+    <span class="nx">effe</span><span class="p">.</span><span class="nx">BuildFlow</span><span class="p">(</span>
+        <span class="nx">effe</span><span class="p">.</span><span class="nx">Step</span><span class="p">(</span><span class="nx">buildUser</span><span class="p">),</span>
+        <span class="nx">effe</span><span class="p">.</span><span class="nx">Step</span><span class="p">(</span><span class="nx">createUser</span><span class="p">),</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="kc">nil</span>
+<span class="p">}</span>
+</pre></div>
 
 
 <h2 id="generate-flow">Generate flow<a class="headerlink" href="#generate-flow" title="Permanent link">&para;</a></h2>
 <p>run <code>effe</code> command</p>
-<pre class="codehilite"><code class="language-bash">$ effe
-effe: wrote /app/effe_gen.go</code></pre>
+<div class="codehilite"><pre><span></span>$ effe
+effe: wrote /app/effe_gen.go
+</pre></div>
 
 
 <p>File: effe_gen.go</p>
-<pre class="codehilite"><code class="language-go">// Code generated by Effe. DO NOT EDIT.
+<div class="codehilite"><pre><span></span><span class="c1">// Code generated by Effe. DO NOT EDIT.</span>
 
-//+build !effeinject
+<span class="c1">//+build !effeinject</span>
 
-package mypackage
+<span class="kn">package</span> <span class="nx">mypackage</span>
 
-import (
-    &quot;context&quot;
-    &quot;fmt&quot;
-    &quot;github.com/example/example&quot;
-)
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;context&quot;</span>
+    <span class="s">&quot;fmt&quot;</span>
+    <span class="s">&quot;github.com/example/example&quot;</span>
+<span class="p">)</span>
 
-func BuildCreateUserFlow(service BuildCreateUserFlowService) BuildCreateUserFlowFunc {
-    return func(ctx context.Context, UserAttributesVal UserAttributes) error {
-        UserVal := service.BuildUser(UserAttributesVal)
-        err := service.CreateUser(ctx, UserVal)
-        if err != nil {
-            return err
-        }
-        return nil
-    }
-}
-func NewBuildCreateUserFlowImpl(userRepo UserRepository) *BuildCreateUserFlowImpl {
-    return &amp;BuildCreateUserFlowImpl{buildUserFieldFunc: buildUser(), createUserFieldFunc: createUser(userRepo)}
-}
+<span class="kd">func</span> <span class="nx">BuildCreateUserFlow</span><span class="p">(</span><span class="nx">service</span> <span class="nx">BuildCreateUserFlowService</span><span class="p">)</span> <span class="nx">BuildCreateUserFlowFunc</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="kd">func</span><span class="p">(</span><span class="nx">ctx</span> <span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span> <span class="nx">UserAttributesVal</span> <span class="nx">UserAttributes</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
+        <span class="nx">UserVal</span> <span class="o">:=</span> <span class="nx">service</span><span class="p">.</span><span class="nx">BuildUser</span><span class="p">(</span><span class="nx">UserAttributesVal</span><span class="p">)</span>
+        <span class="nx">err</span> <span class="o">:=</span> <span class="nx">service</span><span class="p">.</span><span class="nx">CreateUser</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span> <span class="nx">UserVal</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">err</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="kc">nil</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">func</span> <span class="nx">NewBuildCreateUserFlowImpl</span><span class="p">(</span><span class="nx">userRepo</span> <span class="nx">UserRepository</span><span class="p">)</span> <span class="o">*</span><span class="nx">BuildCreateUserFlowImpl</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="o">&amp;</span><span class="nx">BuildCreateUserFlowImpl</span><span class="p">{</span><span class="nx">buildUserFieldFunc</span><span class="p">:</span> <span class="nx">buildUser</span><span class="p">(),</span> <span class="nx">createUserFieldFunc</span><span class="p">:</span> <span class="nx">createUser</span><span class="p">(</span><span class="nx">userRepo</span><span class="p">)}</span>
+<span class="p">}</span>
 
-type BuildCreateUserFlowService interface {
-    BuildUser(uAttrs UserAttributes) User
-    CreateUser(ctx context.Context, user User) error
-}
-type BuildCreateUserFlowImpl struct {
-    buildUserFieldFunc  func(uAttrs UserAttributes) User
-    createUserFieldFunc func(ctx context.Context, user User) error
-}
-type BuildCreateUserFlowFunc func(ctx context.Context, UserAttributesVal UserAttributes) error
+<span class="kd">type</span> <span class="nx">BuildCreateUserFlowService</span> <span class="kd">interface</span> <span class="p">{</span>
+    <span class="nx">BuildUser</span><span class="p">(</span><span class="nx">uAttrs</span> <span class="nx">UserAttributes</span><span class="p">)</span> <span class="nx">User</span>
+    <span class="nx">CreateUser</span><span class="p">(</span><span class="nx">ctx</span> <span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span> <span class="nx">user</span> <span class="nx">User</span><span class="p">)</span> <span class="kt">error</span>
+<span class="p">}</span>
+<span class="kd">type</span> <span class="nx">BuildCreateUserFlowImpl</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">buildUserFieldFunc</span>  <span class="kd">func</span><span class="p">(</span><span class="nx">uAttrs</span> <span class="nx">UserAttributes</span><span class="p">)</span> <span class="nx">User</span>
+    <span class="nx">createUserFieldFunc</span> <span class="kd">func</span><span class="p">(</span><span class="nx">ctx</span> <span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span> <span class="nx">user</span> <span class="nx">User</span><span class="p">)</span> <span class="kt">error</span>
+<span class="p">}</span>
+<span class="kd">type</span> <span class="nx">BuildCreateUserFlowFunc</span> <span class="kd">func</span><span class="p">(</span><span class="nx">ctx</span> <span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span> <span class="nx">UserAttributesVal</span> <span class="nx">UserAttributes</span><span class="p">)</span> <span class="kt">error</span>
 
-func (b *BuildCreateUserFlowImpl) BuildUser(uAttrs UserAttributes) User {
-    return b.buildUserFieldFunc(uAttrs)
-}
-func (b *BuildCreateUserFlowImpl) CreateUser(ctx context.Context, user User) error {
-    return b.createUserFieldFunc(ctx, user)
-}</code></pre>
+<span class="kd">func</span> <span class="p">(</span><span class="nx">b</span> <span class="o">*</span><span class="nx">BuildCreateUserFlowImpl</span><span class="p">)</span> <span class="nx">BuildUser</span><span class="p">(</span><span class="nx">uAttrs</span> <span class="nx">UserAttributes</span><span class="p">)</span> <span class="nx">User</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">b</span><span class="p">.</span><span class="nx">buildUserFieldFunc</span><span class="p">(</span><span class="nx">uAttrs</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="kd">func</span> <span class="p">(</span><span class="nx">b</span> <span class="o">*</span><span class="nx">BuildCreateUserFlowImpl</span><span class="p">)</span> <span class="nx">CreateUser</span><span class="p">(</span><span class="nx">ctx</span> <span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span> <span class="nx">user</span> <span class="nx">User</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">b</span><span class="p">.</span><span class="nx">createUserFieldFunc</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span> <span class="nx">user</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
               
             </div>
           </div>
@@ -271,7 +295,7 @@ func (b *BuildCreateUserFlowImpl) CreateUser(ctx context.Context, user User) err
     
   </div>
 
-  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
 </footer>
       
         </div>
@@ -281,7 +305,7 @@ func (b *BuildCreateUserFlowImpl) CreateUser(ctx context.Context, user User) err
 
   </div>
 
-  <div class="rst-versions" role="note" aria-label="versions">
+  <div class="rst-versions" role="note" style="cursor: pointer">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
           <a href="https://github.com/GettEngineering/effe/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
@@ -297,11 +321,6 @@ func (b *BuildCreateUserFlowImpl) CreateUser(ctx context.Context, user User) err
     <script>var base_url = '..';</script>
     <script src="../js/theme.js" defer></script>
       <script src="../search/main.js" defer></script>
-    <script defer>
-        window.onload = function () {
-            SphinxRtdTheme.Navigation.enable(true);
-        };
-    </script>
 
 </body>
 </html>

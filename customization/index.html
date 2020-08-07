@@ -7,14 +7,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   
-  
   <link rel="shortcut icon" href="../img/favicon.ico">
   <title>Customization - Effe</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
-  <link rel="stylesheet" href="../css/theme.css" />
-  <link rel="stylesheet" href="../css/theme_extra.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
   
   <script>
     // Current page data
@@ -25,7 +24,7 @@
   
   <script src="../js/jquery-2.1.1.min.js" defer></script>
   <script src="../js/modernizr-2.8.3.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script> 
   
 </head>
@@ -36,7 +35,6 @@
 
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
-    <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
         <a href=".." class="icon icon-home"> Effe</a>
         <div role="search">
@@ -47,38 +45,53 @@
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="..">Introduction</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../GettingStarted/">Getting Started</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../API/">Api</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../architecture/">Architecture</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../chain/">Default strategy</a>
-                    </li>
-                </ul>
-                <ul class="current">
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Customization</a>
-    <ul class="current">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Introduction</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../GettingStarted/">Getting Started</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../API/">Api</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../architecture/">Architecture</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../chain/">Default strategy</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">Customization</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#customization">Customization</a></li>
+    
+
     </ul>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../diagrams/">Diagrams</a>
-                    </li>
-                </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../diagrams/">Diagrams</a>
+	    </li>
+          
+        </ul>
       </div>
-    </div>
+      &nbsp;
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
@@ -106,7 +119,6 @@
       
     </li>
   </ul>
-  
   <hr/>
 </div>
           <div role="main">
@@ -115,20 +127,22 @@
                 <h2 id="customization">Customization<a class="headerlink" href="#customization" title="Permanent link">&para;</a></h2>
 <p>You can define custom tasks for Effe.</p>
 <p>We want to generate for making a post request by url.</p>
-<pre class="codehilite"><code class="language-golang">effe.BuildFlow(
+<div class="codehilite"><pre><span></span>effe.BuildFlow(
     effe.Step(step1),
     mytask.POST(
         &quot;http://example.com&quot;,
     ),
-)</code></pre>
+)
+</pre></div>
 
 
 <p>For that, you should create the function <code>POST</code> in your package mytask.</p>
-<pre class="codehilite"><code class="language-golang">package mytask
+<div class="codehilite"><pre><span></span>package mytask
 
 func POST(uri string) interface{} {
     panic(&quot;implementation is not generated, run myeffe&quot;)
-}</code></pre>
+}
+</pre></div>
 
 
 <p>Write functions for:</p>
@@ -137,7 +151,7 @@ func POST(uri string) interface{} {
 <li>Strategy</li>
 <li>Drawer</li>
 </ul>
-<pre class="codehilite"><code class="language-golang">// Loading and validating expressions.
+<div class="codehilite"><pre><span></span>// Loading and validating expressions.
 func LoadPostRequestComponent(effeConditionCall *ast.CallExpr, f loaders.FlowLoader) (types.Component, error) {
     return nil, nil // type of your component and error
 }
@@ -150,11 +164,12 @@ func GenPostRequestComponent(f strategies.FlowGen, c types.Component) (strategie
 // Generates a statement for plantuml.
 func DrawPostRequestComponent(drawer.Drawer, types.Component) (drawer.ComponentStmt, error) {
     return nil, nil
-}</code></pre>
+}
+</pre></div>
 
 
 <p>and register it</p>
-<pre class="codehilite"><code class="language-golang">settings := generator.DefaultSettigs()
+<div class="codehilite"><pre><span></span>settings := generator.DefaultSettigs()
 strategy := strategies.NewChain(strategies.WithServiceObjectName(settings.LocalInterfaceVarname()))
 err := strategy.Register(&quot;POST&quot;, testcustomization.GenPostRequestComponent)
 if err != nil {
@@ -184,7 +199,8 @@ gen := generator.NewGenerator(
 )
 
 // Run generator
-gen.Generate(context.Background(), d, os.Environ(), []string{&quot;.&quot;}</code></pre>
+gen.Generate(context.Background(), d, os.Environ(), []string{&quot;.&quot;}
+</pre></div>
               
             </div>
           </div>
@@ -207,7 +223,7 @@ gen.Generate(context.Background(), d, os.Environ(), []string{&quot;.&quot;}</cod
     
   </div>
 
-  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
 </footer>
       
         </div>
@@ -217,7 +233,7 @@ gen.Generate(context.Background(), d, os.Environ(), []string{&quot;.&quot;}</cod
 
   </div>
 
-  <div class="rst-versions" role="note" aria-label="versions">
+  <div class="rst-versions" role="note" style="cursor: pointer">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
           <a href="https://github.com/GettEngineering/effe/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
@@ -233,11 +249,6 @@ gen.Generate(context.Background(), d, os.Environ(), []string{&quot;.&quot;}</cod
     <script>var base_url = '..';</script>
     <script src="../js/theme.js" defer></script>
       <script src="../search/main.js" defer></script>
-    <script defer>
-        window.onload = function () {
-            SphinxRtdTheme.Navigation.enable(true);
-        };
-    </script>
 
 </body>
 </html>
