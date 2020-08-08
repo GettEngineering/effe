@@ -17,7 +17,7 @@ func C(service CService) CFunc {
 		}
 		responsePtrVal, err := func() (*gentleman.Response, error) {
 			cli := gentleman.New()
-			URI.cli("http://example.com")
+			cli.URI("http://example.com")
 			req := cli.Request()
 			req.Method(POST)
 			return cli.Send()

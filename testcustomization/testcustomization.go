@@ -101,8 +101,8 @@ func GenPostRequestComponent(f strategies.FlowGen, c types.Component) (strategie
 				&ast.ExprStmt{
 					X: &ast.CallExpr{
 						Fun: &ast.SelectorExpr{
-							Sel: cli,
-							X:   ast.NewIdent("URI"),
+							X:   cli,
+							Sel: ast.NewIdent("URI"),
 						},
 						Args: []ast.Expr{
 							component.URI,
