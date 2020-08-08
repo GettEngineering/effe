@@ -2,7 +2,7 @@
 
 ## Motivation
 
-The Effe helps us write based process flows at Gett with the following features:
+The Effe helps us to write process flows at Gett with the following features:
 
 - Provide visibility and traceability into these process flows
 - Errors are wrapped automatically
