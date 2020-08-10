@@ -33,7 +33,7 @@ and ensuring that `$GOPATH/bin` is added to your `$PATH`.
 
 http://gettengineering.github.io/effe
 
-[Getting Started](https://gettengineering.github.io/effe/gettingstarted/basicconcepts/) guide.
+[Getting Started](https://gettengineering.github.io/effe/GettingStarted/) guide.
 
 ## Issues/Problems/Ideas
 
