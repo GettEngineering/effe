@@ -76,11 +76,8 @@ func buildNilVarByType(t ast.Expr) ast.Expr {
 		}
 		return &ast.BasicLit{Value: "nil"}
 	case *ast.SelectorExpr:
-		return &ast.CallExpr{
-			Fun: ast.NewIdent("make"),
-			Args: []ast.Expr{
-				ast.NewIdent(fields.GetTypeStrName(t)),
-			},
+		return &ast.CompositeLit{
+			Type: t,
 		}
 	}
 

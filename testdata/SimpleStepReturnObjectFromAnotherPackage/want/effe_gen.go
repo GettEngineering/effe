@@ -13,7 +13,7 @@ func A(service AService) AFunc {
 	return func() (http.Request, error) {
 		err := service.Step1()
 		if err != nil {
-			return make(http.Request), err
+			return http.Request{}, err
 		}
 		requestVal, err := service.Step2()
 		if err != nil {
