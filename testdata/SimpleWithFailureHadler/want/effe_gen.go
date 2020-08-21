@@ -4,10 +4,6 @@
 
 package main
 
-import (
-	"fmt"
-)
-
 func A(service AService) AFunc {
 	return func() error {
 		err := service.Step1()

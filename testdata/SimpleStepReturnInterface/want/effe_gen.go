@@ -6,7 +6,6 @@ package main
 
 import (
 	"example.com/foo"
-	"fmt"
 )
 
 func A(service AService) AFunc {

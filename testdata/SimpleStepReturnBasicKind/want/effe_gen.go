@@ -4,10 +4,6 @@
 
 package main
 
-import (
-	"fmt"
-)
-
 func A(service AService) AFunc {
 	return func() (converter, []http.Request, []*string, []string, error) {
 		err := service.Step1()

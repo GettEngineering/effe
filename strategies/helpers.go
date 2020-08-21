@@ -99,16 +99,15 @@ func BuildFailureReturnStmt(output *ast.FieldList, vars map[string]*ast.Ident, d
 		if defaultErrMsg != "" {
 			msg.Value = fmt.Sprintf("\"%s\"", defaultErrMsg)
 		}
-
-		if !fmtUsed {
-			fmtUsed = true
-		}
 		var lit ast.Expr
 
 		v, ok := vars["error"]
 		if ok {
 			lit = v
 		} else {
+			if !fmtUsed {
+				fmtUsed = true
+			}
 			lit = &ast.CallExpr{
 				Fun: &ast.SelectorExpr{
 					X:   ast.NewIdent(fmtLibrary),

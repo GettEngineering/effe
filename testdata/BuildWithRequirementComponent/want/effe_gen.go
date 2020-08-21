@@ -4,10 +4,6 @@
 
 package main
 
-import (
-	"fmt"
-)
-
 func BuildComponent5(service BuildComponent5Service) BuildComponent5Func {
 	return func() error {
 		err := service.Step5()
