@@ -31,6 +31,9 @@ func (b *BlockContext) CalculateInput(calls []ComponentCall) {
 		for _, inputField := range c.Input().List {
 			var foundSourceOfArg bool
 			for _, previous := range calls[:index] {
+				if previous.Output() == nil {
+					break
+				}
 				foundSourceOfArg = fields.FindFieldWithType(previous.Output().List, inputField.Type) != nil
 				if foundSourceOfArg {
 					break
