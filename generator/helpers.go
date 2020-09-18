@@ -35,7 +35,7 @@ func mergeImportSets(dst, src map[string]struct{}) {
 	}
 }
 
-func newImplementFunc(newImpleFuncName, impleName *ast.Ident, allDeps []*ast.Field, assignExp []ast.Expr) *ast.FuncDecl {
+func genInitializeImplementFunc(newImpleFuncName, impleName *ast.Ident, allDeps []*ast.Field, assignExp []ast.Expr) *ast.FuncDecl {
 	return &ast.FuncDecl{
 		Name: newImpleFuncName,
 		Type: &ast.FuncType{

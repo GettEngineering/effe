@@ -104,9 +104,12 @@ func (f flowGen) getSortedFlowDependecies() []*ast.Field {
 
 	for i, dep := range allDeps {
 		depCounter := 0
-		for j := i + 1; j < len(allDeps); j++ {
+		for j := 0; j < len(allDeps); j++ {
+			if i == j {
+				continue
+			}
 			if dep.Names[0].Name != allDeps[j].Names[0].Name {
-				break
+				continue
 			}
 			depCounter++
 			allDeps[j].Names[0].Name = strings.Join([]string{

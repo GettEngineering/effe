@@ -125,7 +125,7 @@ func (g Generator) genImplementation(impleName, newImpleFuncName *ast.Ident, f *
 		structType.Fields.List = append(structType.Fields.List, strField)
 		funcDecls = append(funcDecls, implFunc)
 	}
-	interfaceServiceFunc := newImplementFunc(newImpleFuncName, impleName, allDeps, assignExprs)
+	interfaceServiceFunc := genInitializeImplementFunc(newImpleFuncName, impleName, allDeps, assignExprs)
 
 	typeSpec := &ast.TypeSpec{
 		Name: impleName,
