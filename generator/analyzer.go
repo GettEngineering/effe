@@ -73,10 +73,6 @@ func (a *analyzer) findFlowCallPath(funcCall *ast.CallExpr) ([]string, error) {
 				continue
 			}
 			callPath = append(callPath, arg.Name)
-			_, ok := a.visited[a.flowDecls[flowDeclIndex].flowFunc.Name.Name]
-			if ok {
-				continue
-			}
 			if _, ok := a.inProcess[a.flowDecls[flowDeclIndex].flowFunc.Name.Name]; ok {
 				return []string{}, errors.Errorf("circular dependency found for %s", a.flowDecls[flowDeclIndex].flowFunc.Name.Name)
 			}
@@ -88,6 +84,7 @@ func (a *analyzer) findFlowCallPath(funcCall *ast.CallExpr) ([]string, error) {
 				return []string{}, err
 			}
 			a.visited[a.flowDecls[flowDeclIndex].flowFunc.Name.Name] = struct{}{}
+
 			callPath = append(dependeciesFordependecies, callPath...)
 		}
 	}
