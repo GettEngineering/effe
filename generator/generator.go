@@ -222,6 +222,10 @@ type flowDecl struct {
 	buildFlowFuncCall *ast.CallExpr
 }
 
+func (f flowDecl) FlowName() string {
+	return f.flowFunc.Name.Name
+}
+
 type pkgGen struct {
 	flowFuncDecls           []*ast.FuncDecl
 	depInitializerFuncDecls []*ast.FuncDecl
@@ -269,13 +273,13 @@ func (g *Generator) generateForPackage(pkg *packages.Package) (*pkgGen, []error)
 
 	importSet := make(map[string]struct{})
 	p := &pkgGen{}
-	for _, funcDecl := range sortedFlowDecls {
+	for _, flowDecl := range sortedFlowDecls {
 		f := &flowGen{
 			pkgFuncDecls: pkgFuncDecls,
 			implFields:   make(map[string]implFieldInfo),
 		}
 
-		res, err := g.genFlow(funcDecl.flowFunc, funcDecl.buildFlowFuncCall, f)
+		res, err := g.genFlow(flowDecl.flowFunc, flowDecl.buildFlowFuncCall, f)
 		if err != nil {
 			loadErr, ok := err.(*types.LoadError)
 			if ok {
@@ -305,7 +309,7 @@ func (g *Generator) generateForPackage(pkg *packages.Package) (*pkgGen, []error)
 		p.flowFuncDecls = append(p.flowFuncDecls, res.flowFuncDecl)
 		p.implFuncDecls = append(p.implFuncDecls, res.implFuncDecls...)
 		p.typeSpecs = append(p.typeSpecs, res.typeSpecs...)
-		pkgFuncDecls[funcDecl.flowFunc.Name.Name] = res.flowFuncDecl
+		pkgFuncDecls[flowDecl.FlowName()] = res.flowFuncDecl
 		continue
 	}
 

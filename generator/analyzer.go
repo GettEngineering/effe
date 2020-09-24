@@ -24,13 +24,13 @@ func (a *analyzer) sortFlowDeclsByDependecies() ([]flowDecl, []error) {
 	errs := []error{}
 	sequence := make([]string, len(a.flowDecls))
 	for _, flowDecl := range a.flowDecls {
-		a.inProcess[flowDecl.flowFunc.Name.Name] = struct{}{}
+		a.inProcess[flowDecl.FlowName()] = struct{}{}
 		callPath, err := a.findFlowCallPath(flowDecl.buildFlowFuncCall)
 		if err != nil {
 			errs = append(errs, err)
 		}
-		callPath = append(callPath, flowDecl.flowFunc.Name.Name)
-		delete(a.inProcess, flowDecl.flowFunc.Name.Name)
+		callPath = append(callPath, flowDecl.FlowName())
+		delete(a.inProcess, flowDecl.FlowName())
 		for _, call := range callPath {
 			sequence = addUniqueString(sequence, call)
 		}
@@ -42,7 +42,7 @@ func (a *analyzer) sortFlowDeclsByDependecies() ([]flowDecl, []error) {
 	sortedFlowDecls := []flowDecl{}
 	for _, p := range sequence {
 		for _, flowDecl := range a.flowDecls {
-			if p == flowDecl.flowFunc.Name.Name {
+			if p == flowDecl.FlowName() {
 				sortedFlowDecls = append(sortedFlowDecls, flowDecl)
 				break
 			}
@@ -64,7 +64,7 @@ func (a *analyzer) findFlowCallPath(funcCall *ast.CallExpr) ([]string, error) {
 		case *ast.Ident:
 			flowDeclIndex := -1
 			for i, flowDecl := range a.flowDecls {
-				if flowDecl.flowFunc.Name.Name == arg.Name {
+				if flowDecl.FlowName() == arg.Name {
 					flowDeclIndex = i
 					break
 				}
@@ -72,18 +72,19 @@ func (a *analyzer) findFlowCallPath(funcCall *ast.CallExpr) ([]string, error) {
 			if flowDeclIndex == -1 {
 				continue
 			}
-			callPath = append(callPath, arg.Name)
-			if _, ok := a.inProcess[a.flowDecls[flowDeclIndex].flowFunc.Name.Name]; ok {
-				return []string{}, errors.Errorf("circular dependency found for %s", a.flowDecls[flowDeclIndex].flowFunc.Name.Name)
+			flowName := a.flowDecls[flowDeclIndex].FlowName()
+			callPath = append(callPath, flowName)
+			if _, ok := a.inProcess[flowName]; ok {
+				return []string{}, errors.Errorf("circular dependency found for %s", flowName)
 			}
 
-			a.inProcess[a.flowDecls[flowDeclIndex].flowFunc.Name.Name] = struct{}{}
-			defer delete(a.inProcess, a.flowDecls[flowDeclIndex].flowFunc.Name.Name)
+			a.inProcess[flowName] = struct{}{}
+			defer delete(a.inProcess, flowName)
 			dependeciesFordependecies, err := a.findFlowCallPath(a.flowDecls[flowDeclIndex].buildFlowFuncCall)
 			if err != nil {
 				return []string{}, err
 			}
-			a.visited[a.flowDecls[flowDeclIndex].flowFunc.Name.Name] = struct{}{}
+			a.visited[flowName] = struct{}{}
 
 			callPath = append(dependeciesFordependecies, callPath...)
 		}
