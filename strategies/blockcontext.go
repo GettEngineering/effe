@@ -31,13 +31,7 @@ func (b *BlockContext) CalculateInput(calls []ComponentCall) {
 		for _, inputField := range c.Input().List {
 			var foundSourceOfArg bool
 			for _, previous := range calls[:index] {
-				if previous.Output() == nil {
-					continue
-				}
-				foundSourceOfArg = fields.FindFieldWithType(previous.Output().List, inputField.Type) != nil
-				if foundSourceOfArg {
-					break
-				}
+				foundSourceOfArg = previous.Output() != nil && fields.FindFieldWithType(previous.Output().List, inputField.Type) != nil
 			}
 
 			if !foundSourceOfArg {
@@ -63,18 +57,16 @@ func (b *BlockContext) CalculateOutput(calls []ComponentCall) {
 			continue
 		}
 		for _, outputField := range c.Output().List {
-			var using bool
+			var foundUsageOfOutput bool
+
 			for _, next := range calls[index+1:] {
 				if next.Input() == nil {
 					continue
 				}
-				using = fields.FindFieldWithType(next.Input().List, outputField.Type) != nil
-				if using {
-					break
-				}
+				foundUsageOfOutput = next.Input() != nil && fields.FindFieldWithType(next.Input().List, outputField.Type) != nil
 			}
 
-			if !using && fields.FindFieldWithType(b.Output.List, outputField.Type) == nil {
+			if !foundUsageOfOutput && fields.FindFieldWithType(b.Output.List, outputField.Type) == nil {
 				b.addOutput(outputField.Type)
 			}
 		}
