@@ -23,6 +23,7 @@ type BlockContext struct {
 	Builder VarBuilder
 }
 
+//nolint:gocognit
 func (b *BlockContext) CalculateInput(calls []ComponentCall) {
 	for index, c := range calls {
 		if c.Input() == nil {
@@ -31,7 +32,10 @@ func (b *BlockContext) CalculateInput(calls []ComponentCall) {
 		for _, inputField := range c.Input().List {
 			var foundSourceOfArg bool
 			for _, previous := range calls[:index] {
-				foundSourceOfArg = previous.Output() != nil && fields.FindFieldWithType(previous.Output().List, inputField.Type) != nil
+				if previous.Output() != nil && fields.FindFieldWithType(previous.Output().List, inputField.Type) != nil {
+					foundSourceOfArg = true
+					break
+				}
 			}
 
 			if !foundSourceOfArg {
@@ -51,6 +55,7 @@ func (b *BlockContext) OutputList() []*ast.Field {
 	return b.Output.List
 }
 
+//nolint:gocognit
 func (b *BlockContext) CalculateOutput(calls []ComponentCall) {
 	for index, c := range calls {
 		if c.Output() == nil {
@@ -63,7 +68,10 @@ func (b *BlockContext) CalculateOutput(calls []ComponentCall) {
 				if next.Input() == nil {
 					continue
 				}
-				foundUsageOfOutput = next.Input() != nil && fields.FindFieldWithType(next.Input().List, outputField.Type) != nil
+				if next.Input() != nil && fields.FindFieldWithType(next.Input().List, outputField.Type) != nil {
+					foundUsageOfOutput = true
+					break
+				}
 			}
 
 			if !foundUsageOfOutput && fields.FindFieldWithType(b.Output.List, outputField.Type) == nil {
