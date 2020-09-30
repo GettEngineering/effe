@@ -6,6 +6,7 @@ package main
 
 import (
 	"example.com/foo/entities"
+	"fmt"
 )
 
 func A(service AService) AFunc {
@@ -24,48 +25,51 @@ func A(service AService) AFunc {
 		if err != nil {
 			return [3]int{}, []int{}, cmdVal5, nil, entities.Foo{}, 0, "", err
 		}
-		stringVal5, intVal3, fooVal3, fooPtrVal3, cmdVal5, intValAr5, intValAr6 := func(aVal2 a) (string, int, entities.Foo, *entities.Foo, entities.Cmd, []int, [3]int) {
+		stringVal5, intVal3, fooVal3, fooPtrVal3, cmdVal5, intValAr5, intValAr6, err := func(aVal2 a) (string, int, entities.Foo, *entities.Foo, entities.Cmd, []int, [3]int, error) {
 			switch aVal2 {
 			case "a":
 				intValAr3, intValAr4, cmdVal3 := func(aVal a) ([3]int, []int, entities.Cmd) {
 					cmdVal, intValAr, intValAr2 := service.Step2(aVal)
 					return intValAr2, intValAr, cmdVal
 				}(aVal2)
-				return "", 0, entities.Foo{}, nil, cmdVal3, intValAr4, intValAr3
+				return "", 0, entities.Foo{}, nil, cmdVal3, intValAr4, intValAr3, nil
 			case "":
 				fooPtrVal2, cmdVal4 := func() (*entities.Foo, entities.Cmd) {
 					cmdVal2, fooPtrVal := service.Step3()
 					return fooPtrVal, cmdVal2
 				}()
-				return "", 0, entities.Foo{}, fooPtrVal2, cmdVal4, []int{}, [3]int{}
+				return "", 0, entities.Foo{}, fooPtrVal2, cmdVal4, []int{}, [3]int{}, nil
 			case "b":
 				fooVal2 := func() entities.Foo {
 					fooVal := service.Step4()
 					return fooVal
 				}()
-				return "", 0, fooVal2, nil, nil, []int{}, [3]int{}
+				return "", 0, fooVal2, nil, nil, []int{}, [3]int{}, nil
 			case "c":
 				intVal2 := func() int {
 					intVal := service.Step5()
 					return intVal
 				}()
-				return "", intVal2, entities.Foo{}, nil, nil, []int{}, [3]int{}
+				return "", intVal2, entities.Foo{}, nil, nil, []int{}, [3]int{}, nil
 			case "d":
 				stringVal3 := func() string {
 					stringVal := service.Step6()
 					return stringVal
 				}()
-				return stringVal3, 0, entities.Foo{}, nil, nil, []int{}, [3]int{}
+				return stringVal3, 0, entities.Foo{}, nil, nil, []int{}, [3]int{}, nil
 			case "e":
 				stringVal4 := func() string {
 					stringVal2 := service.Step6()
 					return stringVal2
 				}()
-				return stringVal4, 0, entities.Foo{}, nil, nil, []int{}, [3]int{}
+				return stringVal4, 0, entities.Foo{}, nil, nil, []int{}, [3]int{}, nil
 			default:
-				return "", 0, entities.Foo{}, nil, nil, []int{}, [3]int{}
+				return "", 0, entities.Foo{}, nil, nil, []int{}, [3]int{}, fmt.Errorf("unsupported logic by aVal")
 			}
 		}(aVal3)
+		if err != nil {
+			return intValAr6, intValAr5, cmdVal5, fooPtrVal3, fooVal3, intVal3, stringVal5, err
+		}
 		return intValAr6, intValAr5, cmdVal5, fooPtrVal3, fooVal3, intVal3, stringVal5, nil
 	}
 }
