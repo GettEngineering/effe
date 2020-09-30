@@ -8,15 +8,15 @@ func A(service AService) AFunc {
 	return func() (converter, []http.Request, []*string, []string, error) {
 		err := service.Step1()
 		if err != nil {
-			return nil, nil, nil, nil, err
+			return nil, []http.Request{}, []*string{}, []string{}, err
 		}
 		stringValAr, err := service.Step2()
 		if err != nil {
-			return nil, nil, nil, stringValAr, err
+			return nil, []http.Request{}, []*string{}, stringValAr, err
 		}
 		stringPtrValAr, err := service.Step3()
 		if err != nil {
-			return nil, nil, stringPtrValAr, stringValAr, err
+			return nil, []http.Request{}, stringPtrValAr, stringValAr, err
 		}
 		requestValAr, err := service.Step4()
 		if err != nil {

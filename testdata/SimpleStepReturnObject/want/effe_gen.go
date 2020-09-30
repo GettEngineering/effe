@@ -12,7 +12,7 @@ func A(service AService) AFunc {
 	return func() (Foo, error) {
 		err := service.Step1()
 		if err != nil {
-			return make(Foo), err
+			return Foo{}, err
 		}
 		FooVal, err := service.Step2()
 		if err != nil {

@@ -2,6 +2,7 @@ package generator
 
 import (
 	"go/ast"
+	"go/types"
 	"strings"
 
 	"github.com/GettEngineering/effe/fields"
@@ -157,13 +158,13 @@ func genInterface(interfaceName *ast.Ident, f *flowGen) *ast.TypeSpec {
 	}
 }
 
-func (g Generator) genFlow(flowFunc *ast.FuncDecl, buildFlowFuncCall *ast.CallExpr, f *flowGen) (*flowGenRes, error) {
+func (g Generator) genFlow(flowFunc *ast.FuncDecl, buildFlowFuncCall *ast.CallExpr, f *flowGen, typesInfo *types.Info) (*flowGenRes, error) {
 	flowComponents, failureComponent, err := g.loader.LoadFlow(buildFlowFuncCall.Args, f.pkgFuncDecls)
 	if err != nil {
 		return nil, err
 	}
 
-	fn, imports, err := g.strategy.BuildFlow(flowComponents, failureComponent)
+	fn, imports, err := g.strategy.BuildFlow(flowComponents, failureComponent, typesInfo)
 	if err != nil {
 		return nil, err
 	}
