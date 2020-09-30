@@ -21,7 +21,7 @@ func getNamesFromFieldList(list []*ast.Field) []ast.Expr {
 	return vars
 }
 
-func BuildReturnStmt(output *ast.FieldList, vars map[string]*ast.Ident) *ast.ReturnStmt {
+func BuildReturnStmt(output *ast.FieldList, vars map[string]*ast.Ident, typesInfo *types.Info) *ast.ReturnStmt {
 	returnStmt := &ast.ReturnStmt{}
 	for _, output := range output.List {
 		typeStrName := fields.GetTypeStrName(output.Type)
@@ -41,52 +41,51 @@ func BuildReturnStmt(output *ast.FieldList, vars map[string]*ast.Ident) *ast.Ret
 				continue
 			}
 		}
-		returnStmt.Results = append(returnStmt.Results, buildNilVarByType(output.Type))
+		returnStmt.Results = append(returnStmt.Results, buildNilVarByType(output.Type, typesInfo))
 	}
 	return returnStmt
 }
 
-func buildTypeWithVar(t ast.Expr, name string) ast.Expr {
-	switch t.(type) {
-	case *ast.StructType:
-		return &ast.CallExpr{
-			Fun: ast.NewIdent("make"),
-			Args: []ast.Expr{
-				ast.NewIdent(name),
-			},
+func buildNilVarByType(t ast.Expr, typesInfo *types.Info) ast.Expr {
+	if typesInfo.TypeOf(t) == nil {
+		switch exprType := t.(type) {
+		case *ast.StarExpr:
+			t = exprType.X
+		case *ast.SelectorExpr:
+			t = exprType.X
 		}
-	case *ast.ArrayType:
-	case *ast.BasicLit:
-	case *ast.InterfaceType, *ast.FuncType:
-		return &ast.BasicLit{Value: "nil"}
+		if typesInfo.TypeOf(t) == nil {
+			return &ast.BasicLit{Value: "nil"}
+		}
 	}
-	return t
-}
 
-func buildNilVarByType(t ast.Expr) ast.Expr {
-	switch t := t.(type) {
-	case *ast.StarExpr:
+	originalType := typesInfo.TypeOf(t).Underlying()
+	switch castedType := originalType.(type) {
+	case *types.Interface, *types.Chan, *types.Pointer:
 		return &ast.BasicLit{Value: "nil"}
-	case *ast.Ident:
-		if t.Obj != nil && t.Obj.Decl != nil {
-			typeSpec, ok := t.Obj.Decl.(*ast.TypeSpec)
-			if ok {
-				return buildTypeWithVar(typeSpec.Type, t.Name)
-			}
-		}
-		return &ast.BasicLit{Value: "nil"}
-	case *ast.SelectorExpr:
+	case *types.Struct, *types.Array, *types.Slice:
 		return &ast.CompositeLit{
 			Type: t,
+		}
+	case *types.Basic:
+		switch castedType.Kind() {
+		case types.Int, types.Int8, types.Int16, types.Int32, types.Int64, types.Uint, types.Uint8, types.Uint16, types.Uint32, types.Uint64:
+			return &ast.BasicLit{Value: "0"}
+		case types.String:
+			return &ast.BasicLit{Value: "\"\""}
+		case types.Float32, types.Float64:
+			return &ast.BasicLit{Value: "0.0"}
+		case types.Bool:
+			return &ast.BasicLit{Value: "false"}
 		}
 	}
 
 	return &ast.BasicLit{Value: "nil"}
 }
 
-func BuildFailureReturnStmt(output *ast.FieldList, vars map[string]*ast.Ident, defaultErrMsg string) (*ast.ReturnStmt, bool) {
+func BuildFailureReturnStmt(output *ast.FieldList, vars map[string]*ast.Ident, defaultErrMsg string, typesInfo *types.Info) (*ast.ReturnStmt, bool) {
 	fmtUsed := false
-	returnStmt := BuildReturnStmt(output, vars)
+	returnStmt := BuildReturnStmt(output, vars, typesInfo)
 	for index, output := range output.List {
 		typeStrName := fields.GetTypeStrName(output.Type)
 		if typeStrName != "error" {
@@ -184,7 +183,7 @@ func BuildMultiComponentCall(f FlowGen, calls []ComponentCall, failureCall Compo
 	}
 	ctx.Input.List = sortComponentInput(ctx.Input.List)
 	name := BuildMultiComponentName(calls)
-	returnStmt := BuildReturnStmt(ctx.Output, ctx.Vars)
+	returnStmt := BuildReturnStmt(ctx.Output, ctx.Vars, f.TypesInfo())
 	block.List = append(block.List, returnStmt)
 
 	return &componentCall{

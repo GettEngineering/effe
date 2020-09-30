@@ -2,6 +2,7 @@ package strategies
 
 import (
 	"go/ast"
+	goTypes "go/types"
 
 	"github.com/GettEngineering/effe/plugin"
 	"github.com/GettEngineering/effe/types"
@@ -9,7 +10,7 @@ import (
 )
 
 type Chain interface {
-	BuildFlow([]types.Component, types.Component) (ast.Expr, []string, error)
+	BuildFlow([]types.Component, types.Component, *goTypes.Info) (ast.Expr, []string, error)
 	Register(string, Generator) error
 }
 
@@ -54,12 +55,13 @@ func (c *chain) Register(t string, gen Generator) error {
 	return nil
 }
 
-func (c *chain) BuildFlow(components []types.Component, failure types.Component) (ast.Expr, []string, error) {
+func (c *chain) BuildFlow(components []types.Component, failure types.Component, typesInfo *goTypes.Info) (ast.Expr, []string, error) {
 	f := &flowGen{
 		globalVarNamesCounter: make(map[string]int),
 		importSet:             make(map[string]struct{}),
 		chain:                 c,
 		serviceObjectName:     c.serviceObjectName,
+		typesInfo:             typesInfo,
 	}
 
 	f.plugins = c.plugins

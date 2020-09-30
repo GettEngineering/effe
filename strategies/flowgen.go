@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"go/ast"
 	"go/token"
+	goTypes "go/types"
 	"reflect"
 	"strconv"
 	"strings"
@@ -25,6 +26,7 @@ type FlowGen interface {
 	ServiceName() string
 	VarBuilder() VarBuilder
 	GenComponentCall(types.Component) (ComponentCall, error)
+	TypesInfo() *goTypes.Info
 }
 
 func (f flowGen) ServiceName() string {
@@ -37,6 +39,11 @@ type flowGen struct {
 	importSet             map[string]struct{}
 	serviceObjectName     string
 	chain                 *chain
+	typesInfo             *goTypes.Info
+}
+
+func (f flowGen) TypesInfo() *goTypes.Info {
+	return f.typesInfo
 }
 
 func (f *flowGen) GenComponentCall(component types.Component) (ComponentCall, error) {
@@ -96,7 +103,8 @@ func (f *flowGen) buildFailureBlock(ctx *BlockContext, failureCall ComponentCall
 			ifBody.List = append(ifBody.List, failureStmt.Stmt())
 		}
 
-		returnStmt, usedFmtLibrary := BuildFailureReturnStmt(ctx.Output, ctx.Vars, fmt.Sprintf("failure call %s", cName))
+		failMsg := fmt.Sprintf("failure call %s", cName)
+		returnStmt, usedFmtLibrary := BuildFailureReturnStmt(ctx.Output, ctx.Vars, failMsg, f.typesInfo)
 
 		if usedFmtLibrary {
 			f.AddImport(fmtLibrary)

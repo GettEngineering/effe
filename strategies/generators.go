@@ -147,7 +147,7 @@ func GenDecisionComponentCall(f FlowGen, dComponent types.Component) (ComponentC
 		componentStmt := f.BuildComponentStmt(ctx, caseCall, nil)
 		block := f.ApplyPlugins(ctx, componentStmt)
 
-		returnStmt := BuildReturnStmt(ctx.Output, ctx.Vars)
+		returnStmt := BuildReturnStmt(ctx.Output, ctx.Vars, f.TypesInfo())
 		block.List = append(block.List, returnStmt)
 
 		switchStmt.Body.List = append(switchStmt.Body.List, &ast.CaseClause{
@@ -155,8 +155,8 @@ func GenDecisionComponentCall(f FlowGen, dComponent types.Component) (ComponentC
 			List: []ast.Expr{component.Cases[index].Tag},
 		})
 	}
-
-	returnStmt, fmtUsed := BuildFailureReturnStmt(ctx.Output, nil, fmt.Sprintf("unsupported logic by %s", fields.GetTypeStrName(component.Tag)))
+	failMsg := fmt.Sprintf("unsupported logic by %s", fields.GetTypeStrName(component.Tag))
+	returnStmt, fmtUsed := BuildFailureReturnStmt(ctx.Output, nil, failMsg, f.TypesInfo())
 	if fmtUsed {
 		f.AddImport(fmtLibrary)
 	}

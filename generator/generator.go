@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"go/ast"
+	goTypes "go/types"
 
 	"github.com/GettEngineering/effe/types"
 	"github.com/pkg/errors"
@@ -34,7 +35,7 @@ type Loader interface {
 type Strategy interface {
 	// BuildFlow takes a list of components and a failure component and returns
 	// the flow function and an array of imports.sss
-	BuildFlow([]types.Component, types.Component) (ast.Expr, []string, error)
+	BuildFlow([]types.Component, types.Component, *goTypes.Info) (ast.Expr, []string, error)
 }
 
 // Drawe draws graphs for business flows.
@@ -279,7 +280,7 @@ func (g *Generator) generateForPackage(pkg *packages.Package) (*pkgGen, []error)
 			implFields:   make(map[string]implFieldInfo),
 		}
 
-		res, err := g.genFlow(flowDecl.flowFunc, flowDecl.buildFlowFuncCall, f)
+		res, err := g.genFlow(flowDecl.flowFunc, flowDecl.buildFlowFuncCall, f, pkg.TypesInfo)
 		if err != nil {
 			loadErr, ok := err.(*types.LoadError)
 			if ok {
