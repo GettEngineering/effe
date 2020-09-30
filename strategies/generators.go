@@ -3,6 +3,7 @@ package strategies
 import (
 	"fmt"
 	"go/ast"
+	goTypes "go/types"
 
 	"github.com/GettEngineering/effe/fields"
 	"github.com/GettEngineering/effe/types"
@@ -122,6 +123,19 @@ func GenDecisionComponentCall(f FlowGen, dComponent types.Component) (ComponentC
 	for _, call := range calls {
 		ctx.CalculateInput([]ComponentCall{call})
 		ctx.CalculateOutput([]ComponentCall{call})
+	}
+
+	var switchReturnErr bool
+
+	for _, output := range ctx.OutputList() {
+		if goTypes.ExprString(output.Type) == errorExpr {
+			switchReturnErr = true
+			break
+		}
+	}
+
+	if !switchReturnErr {
+		ctx.addOutput(ast.NewIdent("error"))
 	}
 
 	ctx.Output.List = sortComponentOutput(ctx.Output.List)
