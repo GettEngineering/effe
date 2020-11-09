@@ -27,14 +27,14 @@ Result:
             return nil, err
         }
         return nil
-        val2, err := service.Step3(val2)
+        val3, err := service.Step3(val2)
         if err != nil {
             return nil, err
         }
-        val2, err = service.Step4(val2)
+        val4, err = service.Step4(val3)
         if err != nil {
             return nil, err
         }
-        return val2, nil
+        return val4, nil
     }
 ```
